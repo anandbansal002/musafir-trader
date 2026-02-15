@@ -49,10 +49,61 @@
 <footer>
   <p>© 2026 Musafir Trader | Discipline is the Destination</p>
 </footer>
+<script>
+const canvas = document.getElementById("chartCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let candles = [];
+
+for (let i = 0; i < 60; i++) {
+  let open = Math.random() * canvas.height;
+  let close = open + (Math.random() * 100 - 50);
+  let high = Math.max(open, close) + Math.random() * 30;
+  let low = Math.min(open, close) - Math.random() * 30;
+
+  candles.push({ x: i * 20 + 50, open, close, high, low });
+}
+
+function drawCandles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  candles.forEach(candle => {
+    let color = candle.close > candle.open ? "#00ff88" : "#ff4444";
+
+    // Wick
+    ctx.strokeStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(candle.x, candle.high);
+    ctx.lineTo(candle.x, candle.low);
+    ctx.stroke();
+
+    // Body
+    ctx.fillStyle = color;
+    ctx.fillRect(
+      candle.x - 5,
+      candle.open,
+      10,
+      candle.close - candle.open
+    );
+
+    // Animation movement
+    candle.open += Math.random() * 2 - 1;
+    candle.close += Math.random() * 2 - 1;
+  });
+
+  requestAnimationFrame(drawCandles);
+}
+
+drawCandles();
+</script>
 
 
 </body>
 </html>
+
 
 
 
