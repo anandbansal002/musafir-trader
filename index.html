@@ -49,43 +49,11 @@
 <footer>
   <p>© 2026 Musafir Trader | Discipline is the Destination</p>
 </footer>
-<script>
-const canvas = document.getElementById("chartCanvas");
-const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let points = [];
-for (let i = 0; i < 60; i++) {
-  points.push({
-    x: i * (canvas.width / 60),
-    y: canvas.height / 2 + Math.random() * 120 - 60
-  });
-}
-
-function drawChart() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.beginPath();
-  ctx.moveTo(points[0].x, points[0].y);
-
-  for (let i = 1; i < points.length; i++) {
-    points[i].y += Math.random() * 4 - 2;
-    ctx.lineTo(points[i].x, points[i].y);
-  }
-
-  ctx.strokeStyle = "rgba(255, 215, 0, 0.5)";
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  requestAnimationFrame(drawChart);
-}
-
-drawChart();
-</script>
 
 </body>
 </html>
+
 
 
 
