@@ -159,12 +159,16 @@ footer {
 }
 
 .hero-content {
-.hero::after 
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    z-index: 2;
+    position: relative;
+    z-index: 5;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    padding: 60px 80px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    box-shadow: 0 0 40px rgba(255, 215, 0, 0.15);
+}
+
 }
 
   content: "";
@@ -211,4 +215,5 @@ header {
 #chartCanvas {
     z-index: 1;
 }
+
 
